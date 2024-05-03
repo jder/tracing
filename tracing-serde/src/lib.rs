@@ -183,7 +183,11 @@
     unused_parens,
     while_true
 )]
-use std::fmt;
+
+// Support using tracing-serde without the standard library!
+#![cfg_attr(not(feature = "std"), no_std)]
+
+use core::fmt;
 
 use serde::{
     ser::{SerializeMap, SerializeSeq, SerializeStruct, SerializeTupleStruct, Serializer},
